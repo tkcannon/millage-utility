@@ -1,22 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
+  const useDarkTheme = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+
+  console.log(useDarkTheme);
+
   return (
-    <div className="App">
+    <div className="App" data-theme={useDarkTheme ? "dark" : "light"}>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Millage Utitliy</h1>
       </header>
     </div>
   );
