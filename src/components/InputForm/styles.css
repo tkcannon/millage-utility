@@ -1,0 +1,19 @@
+form {
+  margin: var(--lg);
+  padding: var(--lg);
+  border: 2px solid var(--primary);
+  border-radius: var(--lg);
+}
+
+input {
+  margin: var(--sm);
+  padding: 0.25rem;
+  border: 1px solid var(--primary);
+  border-radius: var(--sm);
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid var(--tertiary);
+}

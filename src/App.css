@@ -77,3 +77,19 @@ a:hover {
 header {
   padding: var(--sm);
 }
+
+button {
+  font-size: 1rem;
+  text-decoration: none;
+  padding: var(--sm) var(--m);
+  border-radius: var(--sm);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 1px;
+  background-color: var(--secondary);
+}
+
+button:hover {
+  opacity: 0.8;
+}
