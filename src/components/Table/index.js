@@ -1,36 +1,37 @@
+import { useEffect, useState } from "react";
 import "./styles.css";
 
-function Table(data) {
+function Table({ data }) {
+  const [rowData, setRowData] = useState([]);
+
+  useEffect(() => {
+    if (data !== rowData) {
+      setRowData(data);
+    }
+  }, [data, rowData]);
+
   return (
     <table>
-      <tr>
-        <th>Date</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Location</th>
-        <th>Type</th>
-      </tr>
-      <tr>
-        <td>2/5/12</td>
-        <td>121111</td>
-        <td>312311</td>
-        <td>Some Place Somewhere</td>
-        <td>Business</td>
-      </tr>
-      <tr>
-        <td>2/5/12</td>
-        <td>121111</td>
-        <td>312311</td>
-        <td>Some Place Somewhere</td>
-        <td>Business</td>
-      </tr>
-      <tr>
-        <td>2/5/12</td>
-        <td>121111</td>
-        <td>312311</td>
-        <td>Some Place Somewhere</td>
-        <td>Business</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Location</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((arr) => {
+          return (
+            <tr>
+              {arr.map((cell) => {
+                return <td>{cell}</td>;
+              })}
+            </tr>
+          );
+        })}
+      </tbody>
     </table>
   );
 }
