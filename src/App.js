@@ -1,4 +1,5 @@
 import "./App.css";
+import Table from "./components/Table";
 
 function App() {
   const useDarkTheme = window.matchMedia(
@@ -11,6 +12,7 @@ function App() {
     <div className="App" data-theme={useDarkTheme ? "dark" : "light"}>
       <header className="App-header">
         <h1>Millage Utitliy</h1>
+        <Table />
       </header>
     </div>
   );
