@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { importCSV } from "../../utils/importCSV";
 
 function DataImport({ setData }) {

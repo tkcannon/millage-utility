@@ -1,4 +1,5 @@
 import "./App.css";
+import { SiteProvider } from "./state/GlobalState";
 import InputForm from "./components/InputForm";
 import Table from "./components/Table";
 import DataImport from "./components/DataImport";
@@ -19,12 +20,14 @@ function App() {
 
   return (
     <div className="App" data-theme={useDarkTheme ? "dark" : "light"}>
-      <header className="App-header">
-        <h1>Millage Utitliy</h1>
-      </header>
-      <DataImport setData={setData} />
-      <InputForm />
-      <Table data={data} />
+      <SiteProvider>
+        <header className="App-header">
+          <h1>Millage Utilitiy</h1>
+        </header>
+        <DataImport setData={setData} />
+        <InputForm />
+        <Table data={data} />
+      </SiteProvider>
     </div>
   );
 }

@@ -22,11 +22,11 @@ function Table({ data }) {
         </tr>
       </thead>
       <tbody>
-        {data.map((arr) => {
+        {data.map((arr, i) => {
           return (
-            <tr>
-              {arr.map((cell) => {
-                return <td>{cell}</td>;
+            <tr key={i}>
+              {arr.map((cell, c) => {
+                return <td key={c}>{cell}</td>;
               })}
             </tr>
           );
