@@ -1,5 +1,5 @@
 form {
-  margin: var(--lg);
+  margin: var(--lg) auto;
   padding: var(--lg);
   border: 2px solid var(--primary);
   border-radius: var(--lg);
