@@ -1,5 +1,6 @@
 import "./App.css";
 import InputForm from "./components/InputForm";
+import Table from "./components/Table";
 
 function App() {
   const useDarkTheme = window.matchMedia(
@@ -14,6 +15,7 @@ function App() {
         <h1>Millage Utitliy</h1>
       </header>
       <InputForm />
+      <Table />
     </div>
   );
 }
