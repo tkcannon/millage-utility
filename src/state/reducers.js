@@ -2,10 +2,10 @@ import { SET_TRIPS, ADD_TRIPS, EDIT_TRIP } from "./actions";
 
 import { useReducer } from "react";
 
-export const reducer = (state, aciton) => {
-  switch (aciton.type) {
+export const reducer = (state, action) => {
+  switch (action.type) {
     case SET_TRIPS:
-      return { ...state, trips: aciton.trips };
+      return { ...state, trips: action.trips };
 
     case ADD_TRIPS:
       //
@@ -13,7 +13,7 @@ export const reducer = (state, aciton) => {
       //if millage overlap, inform user and bring up conflict to edit
       //create modal for conflict edit
       //
-      return { ...state, trips: [...state.trips, ...aciton.trips] };
+      return { ...state, trips: [...state.trips, ...action.trips] };
 
     //trips will need identifier (which will be created by idb) to edit
 
