@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { importCSV } from "../../utils/importCSV";
+import { idbPromise } from "../../state/idb";
+import { useSiteContext } from "../../state/GlobalState";
+import { ADD_TRIPS } from "../../state/actions";
 
-function DataImport({ setData }) {
+function DataImport() {
   const [importFile, setImportFile] = useState("");
+  const [, dispatch] = useSiteContext();
+  const [data, setData] = useState([]);
 
   const handleFileChange = (event) => {
     setImportFile(event.target.files[0]);
@@ -12,6 +17,14 @@ function DataImport({ setData }) {
     event.preventDefault();
     importCSV(importFile, setData);
   };
+
+  useEffect(() => {
+    if (data.length) {
+      idbPromise("put", data);
+      dispatch({ type: ADD_TRIPS, trips: data });
+      setData([]);
+    }
+  }, [data, dispatch]);
 
   return (
     <form>

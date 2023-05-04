@@ -1,5 +1,8 @@
-import { useState } from "react";
 import "./styles.css";
+import { useState } from "react";
+import { idbPromise } from "../../state/idb";
+import { useSiteContext } from "../../state/GlobalState";
+import { ADD_TRIPS } from "../../state/actions";
 
 function InputForm() {
   const [data, setData] = useState({
@@ -9,6 +12,8 @@ function InputForm() {
     location: null,
     purpose: "Business",
   });
+
+  const [, dispatch] = useSiteContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();

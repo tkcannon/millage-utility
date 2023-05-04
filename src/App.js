@@ -1,9 +1,8 @@
 import "./App.css";
-import { SiteProvider } from "./state/GlobalState";
+import { SiteProvider, useSiteContext } from "./state/GlobalState";
 import InputForm from "./components/InputForm";
-import Table from "./components/Table";
+import TableContainer from "./components/TableContainer";
 import DataImport from "./components/DataImport";
-import { useEffect, useState } from "react";
 
 function App() {
   const useDarkTheme = window.matchMedia(
@@ -12,21 +11,15 @@ function App() {
 
   console.log(useDarkTheme);
 
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <div className="App" data-theme={useDarkTheme ? "dark" : "light"}>
       <SiteProvider>
         <header className="App-header">
           <h1>Millage Utilitiy</h1>
         </header>
-        <DataImport setData={setData} />
+        <DataImport />
         <InputForm />
-        <Table data={data} />
+        <TableContainer />
       </SiteProvider>
     </div>
   );

@@ -3,14 +3,14 @@ import "./styles.css";
 
 function Table({ data }) {
   const [rowData, setRowData] = useState([]);
-
+  console.log({ data: data });
   useEffect(() => {
     if (data !== rowData) {
       setRowData(data);
     }
   }, [data, rowData]);
 
-  return (
+  return data.length ? (
     <table>
       <thead>
         <tr>
@@ -33,6 +33,8 @@ function Table({ data }) {
         })}
       </tbody>
     </table>
+  ) : (
+    <></>
   );
 }
 
