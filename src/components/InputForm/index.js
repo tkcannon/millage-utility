@@ -1,5 +1,5 @@
 import "./styles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { idbPromise } from "../../state/idb";
 import { useSiteContext } from "../../state/GlobalState";
 import { ADD_TRIPS } from "../../state/actions";
@@ -9,36 +9,45 @@ function InputForm() {
     date: null,
     start: null,
     end: null,
-    location: null,
+    destination: null,
     purpose: "Business",
   });
 
   const [, dispatch] = useSiteContext();
 
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setData({ ...data, [name]: value });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
-    <form>
+    <form onChange={handleChange}>
       <label>
         Date
-        <input type="date" defaultValue={"today"}></input>
+        <input name="date" type="date" value={data.date}></input>
       </label>
       <label>
         Start Millage
-        <input type="number"></input>
+        <input name="start" type="number" value={data.start}></input>
       </label>
       <label>
         End Millage
-        <input type="number"></input>
+        <input name="end" type="number" value={data.end}></input>
       </label>
       <label>
-        Location
-        <input></input>
+        Destination
+        <input name="destination" value={data.destination}></input>
       </label>
       <label>Type</label>
-      <input list="purpose" />
+      <input name="purpose" list="purpose" value={data.purpose} />
       <datalist id="purpose">
         <option value="Business" />
         <option value="Personal" />
