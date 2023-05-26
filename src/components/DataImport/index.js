@@ -20,8 +20,19 @@ function DataImport() {
 
   useEffect(() => {
     if (data.length) {
-      idbPromise("put", data);
-      dispatch({ type: ADD_TRIPS, trips: data });
+      let trips = [];
+      for (let i = 0; i < data.length; i++) {
+        const trip = data[i];
+        trips.push({
+          date: trip[0],
+          start: trip[1],
+          end: trip[2],
+          destination: trip[3],
+          purpose: trip[4],
+        });
+      }
+      idbPromise("put", trips);
+      dispatch({ type: ADD_TRIPS, trips: trips });
       setData([]);
     }
   }, [data, dispatch]);

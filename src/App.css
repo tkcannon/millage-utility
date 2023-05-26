@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --background: #eee;
   --primary: royalblue;
   --secondary: teal;
@@ -27,7 +27,6 @@
   text-align: center;
 }
 
-/* Typography */
 
 h1,
 h2,
@@ -72,7 +71,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* components */
 
 header {
   padding: var(--sm);
@@ -92,4 +90,4 @@ button {
 
 button:hover {
   opacity: 0.8;
-}
+} */

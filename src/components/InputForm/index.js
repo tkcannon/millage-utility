@@ -1,4 +1,3 @@
-import "./styles.css";
 import { useEffect, useState } from "react";
 import { idbPromise } from "../../state/idb";
 import { useSiteContext } from "../../state/GlobalState";
@@ -23,10 +22,6 @@ function InputForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <form onChange={handleChange}>

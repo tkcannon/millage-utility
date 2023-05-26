@@ -1,25 +1,27 @@
 import "./App.css";
 import { SiteProvider, useSiteContext } from "./state/GlobalState";
 import InputForm from "./components/InputForm";
-import TableContainer from "./components/TableContainer";
 import DataImport from "./components/DataImport";
 
-function App() {
-  const useDarkTheme = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
+import DaysContainer from "./components/DaysContainer";
+import { ThemeProvider } from "@emotion/react";
+import { createTheme } from "@mui/material";
 
-  console.log(useDarkTheme);
+function App() {
+  const mainTheme = createTheme();
 
   return (
-    <div className="App" data-theme={useDarkTheme ? "dark" : "light"}>
+    <div className="App">
       <SiteProvider>
-        <header className="App-header">
-          <h1>Millage Utilitiy</h1>
-        </header>
-        <DataImport />
+        <ThemeProvider theme={mainTheme}>
+          <header className="App-header">
+            <h1>Millage Utilitiy</h1>
+          </header>
+          {/* <DataImport />
         <InputForm />
-        <TableContainer />
+      <TableContainer /> */}
+          <DaysContainer />
+        </ThemeProvider>
       </SiteProvider>
     </div>
   );
