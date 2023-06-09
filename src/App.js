@@ -1,12 +1,12 @@
 import "./App.css";
 import { SiteProvider, useSiteContext } from "./state/GlobalState";
-import InputForm from "./components/InputForm";
-import DataImport from "./components/DataImport";
 
-import DaysContainer from "./components/DaysContainer";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import Header from "./components/Header";
+import Millage from "./pages/Millage";
+import Nav from "./components/Nav";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const mainTheme = createTheme({
@@ -25,11 +25,17 @@ function App() {
     <div className="App">
       <SiteProvider>
         <ThemeProvider theme={mainTheme}>
-          <Header />
-          {/* <DataImport />
+          <BrowserRouter>
+            <Header />
+            <Nav />
+            <Routes>
+              <Route path="/millage" element={<Millage />} />
+              {/* <DataImport />
         <InputForm />
       <TableContainer /> */}
-          <DaysContainer />
+              {/* <DaysContainer /> */}
+            </Routes>
+          </BrowserRouter>
         </ThemeProvider>
       </SiteProvider>
     </div>
