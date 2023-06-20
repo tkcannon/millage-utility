@@ -1,13 +1,13 @@
+//Move day.js and dayscontainer here
+
+import { useEffect, useState } from "react";
 import { useSiteContext } from "../state/GlobalState";
-import { useState, useEffect } from "react";
+import MillageDay from "./MillageDay";
 import { idbPromise } from "../state/idb";
 import { SET_TRIPS } from "../state/actions";
-import { Box } from "@mui/material";
-import Day from "./Day";
 
-function DaysContainer() {
+function MillageData(props) {
   const [state, dispatch] = useSiteContext();
-
   const [days, setDays] = useState([]);
 
   useEffect(() => {
@@ -21,43 +21,45 @@ function DaysContainer() {
   }, [state.trips.length, dispatch]);
 
   useEffect(() => {
+    //sort trips based on starting millage
     function sortTrips() {
-      console.log(state.trips);
       const trips = state.trips.sort((a, b) => {
         return a.start > b.start ? -1 : 1;
       });
       let previousTrip = trips[0];
+      // let months = [];
       let day = [];
       let days = [];
       for (let i = 0; i < trips.length; i++) {
         const trip = trips[i];
-        console.log(trip.date);
+        // const month = trip.date.split("/")[0];
+        // console.log(month);
         if (trip.date === previousTrip.date) {
           day.push(trip);
           if (i === trips.length - 1) {
             days.push(day);
           }
         } else {
-          console.log("day", day, i);
           days.push(day);
           day = [trip];
         }
         previousTrip = trip;
       }
-      console.log("days", days);
       setDays(days);
     }
     if (state.trips.length) {
       sortTrips();
     }
-  }, [state.trips.length]);
+  }, [state.trips, state.trips.length]);
 
   return (
-    <Box>
-      {days.map((day, i) => {
-        return <Day trips={days[i]} key={i} />;
-      })}
-    </Box>
+    <>
+      {days.length ? (
+        days.map((trips, i) => <MillageDay trips={trips} key={i} />)
+      ) : (
+        <></>
+      )}
+    </>
   );
 }
-export default DaysContainer;
+export default MillageData;

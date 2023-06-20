@@ -1,8 +1,6 @@
 import { Box, Divider, Typography } from "@mui/material";
 
 function MillageTrip({ trip }) {
-  console.log(trip);
-
   return (
     trip && (
       <Box>

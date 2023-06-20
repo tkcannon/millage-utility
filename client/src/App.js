@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Millage from "./pages/Millage";
 import Nav from "./components/Nav";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import OverView from "./pages/Overview";
 
 function App() {
   const mainTheme = createTheme({
@@ -29,11 +30,9 @@ function App() {
             <Header />
             <Nav />
             <Routes>
+              <Route path="/" element={<OverView />} />
               <Route path="/millage" element={<Millage />} />
-              {/* <DataImport />
-        <InputForm />
-      <TableContainer /> */}
-              {/* <DaysContainer /> */}
+              <Route path="*" element={<OverView />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>

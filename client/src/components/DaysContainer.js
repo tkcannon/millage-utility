@@ -1,13 +1,13 @@
-//Move day.js and dayscontainer here
-
-import { useEffect, useState } from "react";
 import { useSiteContext } from "../state/GlobalState";
-import MillageDay from "./MillageDay";
+import { useState, useEffect } from "react";
 import { idbPromise } from "../state/idb";
 import { SET_TRIPS } from "../state/actions";
+import { Box } from "@mui/material";
+import Day from "./Day";
 
-function MillageData(props) {
+function DaysContainer() {
   const [state, dispatch] = useSiteContext();
+
   const [days, setDays] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,6 @@ function MillageData(props) {
   }, [state.trips.length, dispatch]);
 
   useEffect(() => {
-    //sort trips based on starting millage
     function sortTrips() {
       const trips = state.trips.sort((a, b) => {
         return a.start > b.start ? -1 : 1;
@@ -47,16 +46,14 @@ function MillageData(props) {
     if (state.trips.length) {
       sortTrips();
     }
-  }, [state.trips, state.trips.length]);
+  }, [state.trips.length]);
 
   return (
-    <>
-      {days.length ? (
-        days.map((trips, i) => <MillageDay trips={trips} key={i} />)
-      ) : (
-        <></>
-      )}
-    </>
+    <Box>
+      {days.map((day, i) => {
+        return <Day trips={days[i]} key={i} />;
+      })}
+    </Box>
   );
 }
-export default MillageData;
+export default DaysContainer;

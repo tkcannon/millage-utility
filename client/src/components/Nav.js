@@ -10,7 +10,6 @@ function Nav() {
   };
 
   function LinkTab(props) {
-    console.log(props.href);
     return <Tab component={Link} {...props} />;
   }
 
