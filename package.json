@@ -1,8 +1,13 @@
 {
   "name": "millage-utility",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
+    "start": "node server/server.js",
+    "client": "cd client && npm start",
+    "develop": "concurrently \"cd server && npm run watchh\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
