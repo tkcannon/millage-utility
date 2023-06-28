@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
+const Trip = require("./trip");
 
 const userSchema = new Schema({
-  userName: {
+  username: {
     type: String,
     required: true,
     unique: true,
@@ -21,7 +22,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  trips: [],
+  trips: [Trip.schema],
 });
 
 userSchema.pre("save", async function (next) {
